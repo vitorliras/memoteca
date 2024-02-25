@@ -10,32 +10,34 @@ import { map } from 'rxjs/operators';
 })
 export class PensamentoService {
 
-  private readonly API = "http://localhost:3000/pensamentos";
+  private readonly API = 'http://localhost:3000/pensamentos'
 
   constructor(private http: HttpClient) { }
 
-listar(): Observable<Pensamento[]>{
-  return this.http.get<Pensamento[]>(this.API)
-}
+  listar(): Observable<Pensamento[]> {
+    return this.http.get<Pensamento[]>(this.API)
+  }
 
-criar(pensamento: Pensamento): Observable<Pensamento>{
-  return this.http.post<Pensamento>(this.API, pensamento)
-}
+  criar(pensamento: Pensamento): Observable<Pensamento> {
+    debugger;
+    return this.http.post<Pensamento>(this.API, pensamento)
+  }
 
-editar(pensamento: Pensamento): Observable<Pensamento>{
-  const url = `${this.API}/${pensamento.id}`
-  return this.http.put<Pensamento>(this.API, pensamento)
-}
+  editar(pensamento: Pensamento): Observable<Pensamento> {
+    const url = `${this.API}/${pensamento.id}`
+    return this.http.put<Pensamento>(url, pensamento )
 
-excluir(id: number): Observable<Pensamento>{
-  const url = `${this.API}/${id}`
-  return this.http.delete<Pensamento>(url)
-}
+  }
 
-buscarPorId(id: number): Observable<Pensamento>{
-  const url = `${this.API}/${id}`
-  return this.http.get<Pensamento>(url)
-}
+  excluir(id: string): Observable<Pensamento> {
+    const url = `${this.API}/${id}`
+    return this.http.delete<Pensamento>(url)
+  }
+
+  buscarPorId(id: string): Observable<Pensamento> {
+    const url = `${this.API}/${id}`
+    return this.http.get<Pensamento>(url)
+  }
 
 obterQuantidadeDeDados(): Observable<number> {
   return this.listar().pipe(

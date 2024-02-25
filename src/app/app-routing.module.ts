@@ -6,27 +6,28 @@ import { ListarPensamentoComponent } from './components/pensamentos/listar-pensa
 import { EditarPensamentoComponent } from './components/pensamentos/editar-pensamento/editar-pensamento.component';
 
 const routes: Routes = [
-    {
-      path: '',
-      redirectTo: "listarPensamento",
-      pathMatch: 'full'
-    },
-    {
-      path: 'listarPensamento',
-      component: ListarPensamentoComponent
-    },
-    {
-        path: 'criarPensamento',
-        component: CriarPensamentosComponent
-    },
-    {
-      path: 'pensamentos/excluirPensamento/:id',
-      component: ExcluirPensamentoComponent
-    },
-    {
-      path: 'pensamentos/editarPensamento/:id',
-      component: EditarPensamentoComponent
-    }
+  {
+    path: '',
+    redirectTo: 'listarPensamento',
+    pathMatch: 'full'
+  },
+  {
+    path: 'criarPensamento',
+    component: CriarPensamentosComponent
+  },
+  {
+    path: 'listarPensamento',
+    component: ListarPensamentoComponent
+  },
+  {
+    path: 'pensamentos/excluirPensamento/:id',
+    component: ExcluirPensamentoComponent
+  },
+  {
+    path: 'pensamentos/editarPensamento/:id',
+    component: EditarPensamentoComponent
+  }
+
 ];
 
 @NgModule({

@@ -16,7 +16,6 @@ pensamento: Pensamento = {
   autoria:'',
   modelo:''
 }
-id: number = 0;
 
   constructor(
     private service: PensamentoService,
@@ -26,21 +25,23 @@ id: number = 0;
   ngOnInit(): void {
   }
 
-  criarPesanmento(){
+  criarPensamento(){
+    debugger;
     this.service.obterQuantidadeDeDados().subscribe((qtd) =>{
+    debugger;
+
       if(qtd >0){
-        this.id = qtd++;
+        this.pensamento.id= (qtd++).toString();
       }else{
-        this.id = qtd;
+        this.pensamento.id= qtd.toString();
       }
-      this.pensamento.id = this.id;
-    })
-    this.service.criar(this.pensamento).subscribe(() =>{
-      this.router.navigate(['/listarPensamento'])
+      this.service.criar(this.pensamento).subscribe(() =>{
+        this.router.navigate(['/listarPensamento'])
+      })
     })
   }
 
-  cancelarPesanmento(){
+  cancelar(){
     this.router.navigate(['/listarPensamento'])
   }
 
